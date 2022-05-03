@@ -30,8 +30,8 @@ url: "https://hirosiuko.github.io" # the base hostname & protocol for your site,
 
 #baseurl: ""
 #url: ""
-twitter_username: jekyllrb
-github_username:  hirosi.uko
+twitter_username:
+github_username: hirosiuko
 
 # Build settings
 #theme: just-the-docs
@@ -61,10 +61,10 @@ search:
   # Set the search token separator
   # Default: /[\s\-/]+/
   # Example: enable support for hyphenated search words
-  tokenizer_separator: /[\s/]+/
+  tokenizer_separator: /[\s\-/]+/
   # Display the relative url in search results
   # Supports true (default) or false
-  rel_url: false
+  rel_url: true
   # Enable or disable the search button that appears in the bottom right corner of every page
   # Supports true or false (default)
   button: false
@@ -130,12 +130,12 @@ collections:
     permalink: "/:collection/:path/"
     output: true
 
-just_the_docs:
-  collections:
-    docs:
-      name: Documentation
-    tutorials:
-      name: Tutorials
+#just_the_docs:
+#  collections:
+#    docs:
+#      name: Documentation
+#    tutorials:
+#      name: Tutorials
 
 # Exclude from processing.
 # The following items will not be processed, by default.
