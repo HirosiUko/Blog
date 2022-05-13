@@ -1,16 +1,14 @@
 ---
 layout: default
-title: Home
-nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+title: Blog
 permalink: /
+search_exclude: true
 ---
 
-<ul>
-    {% for post in site.posts %}
-<li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-</li>
-    {% endfor %}
-</ul>
+# Blog
 
+<ul class="posts">
+   {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+   {% endfor %}
+</ul>

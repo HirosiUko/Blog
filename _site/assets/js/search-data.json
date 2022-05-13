@@ -1,0 +1,44 @@
+{"0": {
+    "doc": "About",
+    "title": "About",
+    "content": "This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at jekyllrb.com . You can find the source code for Minima at GitHub: jekyll / minima . You can find the source code for Jekyll at GitHub: jekyll / jekyll . ",
+    "url": "/about/",
+    "relUrl": "/about/"
+  },"1": {
+    "doc": "딥러닝 개론",
+    "title": "딥러닝 개론",
+    "content": " ",
+    "url": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html",
+    "relUrl": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html"
+  },"2": {
+    "doc": "딥러닝 개론",
+    "title": "퍼셉트론",
+    "content": "01 인공 신경망 . 데이터 -&gt; input layer -&gt; 1 hidden layer -&gt; … layer -&gt; output layer =&gt; 회귀분석, 분류, 패턴파악. 테이트의 특성 = feature . 지도학슴(class) . 비지도 학습 (clustering) . 02 퍼셉트론 (Perceptron) . 네트워크를 이루는 하나하나의 요소를 퍼셉트론 이라 한다. 활성화 함수 : 비선형함수이다. 활성화 함수 (Activation function) . 퍼셉트론 코드 예시 . def perceptron(x, weights): # bias sum_ = weights[0] for i in range(len(x)-1): sum_ += weights[i+1] * x[i] return 1 if sum_ &gt;= 0 else 0 . 03 퍼셉트론 선형 분류기 . 퍼셉트론 논리회로 - AND gate . AND gate: . c = activation( 1 * A + 1 * B - 1.5) . 퍼셉트론 논리회로 - OR gate . OR gate: . c = activation( 1 * A + 1 * B - 0.5) . 퍼셉트론 논리회로 - NOR gate . NOR gate . C = activation((-1)A + (-1)B + 0.5 ) . 퍼셉트론 논리회로 - NAND gate . NAND gate . C = activation((-1)A + (-1)B + 1.5 ) . 이외의 NOR, NAND 포함하여, Linar classifier . 04 비 선형적인 문제 . 비 선형적 논리 게이트, XOR gate . –&gt; xor로 인하여 빙하기~ . 05 다층 피셉트론 . Hidden layer가 많아질 수록, complexity가 증가 . 이를 경우 deep learning이라고 함. ",
+    "url": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html#%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0",
+    "relUrl": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html#퍼셉트론"
+  },"3": {
+    "doc": "딥러닝 개론",
+    "title": "예제 문제",
+    "content": "다층 퍼셉트론(MLP) 모델로 2D 데이터 분류하기 . data 폴더에 위치한 test.txt 데이터와 train.txt 데이터를 활용하여 2-D 평면에 0과 1로 이루어진 점들의 각 좌표 정보 (x,y)(x, y)(x,y) 를 통해 모델을 학습시키겠습니다. hidden_layer_sizes를 조정해보면서 다층 퍼셉트론 분류 모델을 학습시켜 모델의 정확도가 81% 를 넘도록 해봅시다. 이전 실습에서 단층 퍼셉트론인 AND, OR, NAND Gate를 구현하고, 이들을 쌓아서 XOR Gate를 만들어 보았습니다. 즉, XOR Gate는 단층 퍼셉트론을 여러 개 쌓아서 만든 다층 퍼셉트론 (MLP: Multi Layer Perceptron)이라고 할 수 있습니다. 다층 퍼셉트론으로 만든 모델은 인공 신경망이라고도 합니다. image . 이번 실습에서는 사이킷런에서 제공하는 다층 퍼셉트론 모델인 MLPClassifier를 이용해서 2D 데이터를 분류해보겠습니다. 다층 퍼셉트론 모델을 사용하기 위한 사이킷런 함수/라이브러리 . | from sklearn.neural_network import MLPClassifier: 사이킷런에 구현되어 있는 다층 퍼셉트론 모델을 불러옵니다. | MLPClassifier(hidden_layer_sizes): MLPClassifier를 정의합니다. | hidden_layer_sizes: 간단하게 hidden layer의 크기를 조절할 수 있는 인자입니다. | . MLPClassifier는 역전파(backpropagation)라는 기법을 사용하여 모델을 학습합니다. 역전파는 2장에서 자세하게 배울 수 있으니 여기선 용어만 알아둡시다. 밑의 소스 코드는 첫 번째 히든층에 4개, 두 번째 히든층에 4개의 퍼셉트론을 가지게 설정한 것이고, 위 그림과 같은 모델을 나타냅니다. clf = MLPClassifier(hidden_layer_sizes=(4, 4)) clf.fit(X, Y) . 실습 . | MLPClassifier를 정의하고 hidden_layer_sizes를 조정해 히든층의 레이어의 개수와 퍼셉트론의 개수를 바꿔본 후, 학습을 시킵니다. | 정확도를 출력하는 report_clf_stats함수를 완성합니다. hit는 맞춘 데이터의 개수, miss는 못 맞춘 데이터의 개수입니다. 정확도 점수 score는 (맞춘 데이터의 개수 / 전체 데이터 개수) x 100으로 정의하겠습니다. score를 코드로 작성해보세요. | 앞서 완성한 함수를 실행시키는 main 함수를 완성합니다. 코드 주석의 Step들을 참고하세요. | 일반적으로, 레이어 내의 퍼셉트론의 개수가 많아질수록 성능이 올라가는 것을 확인할 수 있습니다. 레이어의 개수와 퍼셉트론의 개수를 극단적으로 늘려보기도 하고, 줄여보면서 정확도를 81% 이상으로 늘려보세요. | . 출력 예시 . 아래 이미지는 학습 결과에 대한 출력 예시입니다. 그래프에서 나타나는 배경색은 모델이 예측한 결과, O/X 가 나타내는 색은 실제값 (ground truth) 입니다. 모델이 맞게 예측한 경우 O, 틀리게 예측한 경우 X 로 표시됩니다. import numpy as np from visual import * from sklearn.neural_network import MLPClassifier from elice_utils import EliceUtils elice_utils = EliceUtils() import warnings warnings.filterwarnings(action='ignore') np.random.seed(100) # 데이터를 읽어오는 함수입니다. def read_data(filename): X = [] Y = [] with open(filename) as fp: N, M = fp.readline().split() N = int(N) M = int(M) for i in range(N): line = fp.readline().split() for j in range(M): X.append([i, j]) Y.append(int(line[j])) X = np.array(X) Y = np.array(Y) return (X, Y) ''' 1. MLPClassifier를 정의하고 hidden_layer_sizes를 조정해 hidden layer의 크기 및 레이어의 개수를 바꿔본 후, 학습을 시킵니다. Done ''' def train_MLP_classifier(X, Y): clf = MLPClassifier(hidden_layer_sizes=(100, 100)) clf.fit(X, Y) return clf ''' 2. 테스트 데이터에 대한 정확도를 출력하는 함수를 완성합니다. 설명을 보고 score의 코드를 작성해보세요. Done ''' def report_clf_stats(clf, X, Y): hit = 0 miss = 0 for x, y in zip(X, Y): if clf.predict([x])[0] == y: hit += 1 else: miss += 1 score = hit / len(X) * 100 print(\"Accuracy: %.1lf%% (%d hit / %d miss)\" % (score, hit, miss)) return score ''' 3. main 함수를 완성합니다. Step01. 학습용 데이터인 X_train, Y_train과 테스트용 데이터인 X_test, Y_test를 각각 read_data에서 반환한 값으로 정의합니다. 우리가 사용할 train.txt 데이터셋과 test.txt 데이터셋은 data 폴더에 위치합니다. Step02. 앞에서 학습시킨 다층 퍼셉트론 분류 모델을 'clf'로 정의합니다. 'clf'의 변수로는 X_train과 Y_train으로 설정합니다. Step03. 앞에서 완성한 정확도 출력 함수를 'score'로 정의합니다. 'score'의 변수로는 X_test와 Y_test로 설정합니다. ''' def main(): X_train, Y_train = read_data('data/train.txt') X_test, Y_test = read_data('data/test.txt') clf = train_MLP_classifier(X_train, Y_train) score = report_clf_stats(clf, X_test, Y_test) visualize(clf, X_test, Y_test) if __name__ == \"__main__\": main() . train.txt ['10 10\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 1 1 1 0 0 0 0\\n', '0 0 1 1 1 1 1 0 0 0\\n', '0 1 1 1 1 1 1 1 0 0\\n', '0 1 1 1 1 1 1 1 0 0\\n', '1 1 1 1 1 1 1 1 1 0\\n', '1 1 1 1 1 1 1 1 1 0\\n', '1 1 1 1 1 1 1 1 1 0'] . test.txt ['10 10\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 0 0 0 0 0 0 0\\n', '0 0 0 0 0 1 1 1 0 0\\n', '0 0 0 0 1 1 1 1 1 0\\n', '0 0 0 1 1 1 1 1 1 0\\n', '0 0 1 1 1 1 1 1 1 0\\n', '0 1 1 1 1 1 1 1 1 1\\n', '1 1 1 1 1 1 1 1 1 1\\n', '1 1 1 1 1 1 1 1 1 1\\n'] . ",
+    "url": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html#%EC%98%88%EC%A0%9C-%EB%AC%B8%EC%A0%9C",
+    "relUrl": "/2022/05/13/%EB%94%A5%EB%9F%AC%EB%8B%9D.html#예제-문제"
+  },"4": {
+    "doc": "테스트로 한번 만들어 본다",
+    "title": "테스트로 한번 만들어 본다",
+    "content": "그냥 만드는 거니 그냥 만들었으니 그냥 놀자 this is a apple . ",
+    "url": "/2022/05/13/new_post.html",
+    "relUrl": "/2022/05/13/new_post.html"
+  },"5": {
+    "doc": "Welcome to Jekyll!",
+    "title": "“Welcome to Jekyll!”",
+    "content": "You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated. Jekyll requires blog post files to be named according to the following format: . YEAR-MONTH-DAY-title.MARKUP . Where YEAR is a four-digit number, MONTH and DAY are both two-digit numbers, and MARKUP is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works. Jekyll also offers powerful support for code snippets: . def print_hi(name) puts \"Hi, #{name}\" end print_hi('Tom') #=&gt; prints 'Hi, Tom' to STDOUT. Check out the Jekyll docs for more info on how to get the most out of Jekyll. File all bugs/feature requests at Jekyll’s GitHub repo. If you have questions, you can ask them on Jekyll Talk. ",
+    "url": "/jekyll/update/2022/05/13/welcome-to-jekyll.html#welcome-to-jekyll",
+    "relUrl": "/jekyll/update/2022/05/13/welcome-to-jekyll.html#welcome-to-jekyll"
+  },"6": {
+    "doc": "Welcome to Jekyll!",
+    "title": "Welcome to Jekyll!",
+    "content": " ",
+    "url": "/jekyll/update/2022/05/13/welcome-to-jekyll.html",
+    "relUrl": "/jekyll/update/2022/05/13/welcome-to-jekyll.html"
+  }
+}
